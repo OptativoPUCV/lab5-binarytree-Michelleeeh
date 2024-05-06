@@ -155,3 +155,17 @@ treemap.c:52:12: error: ‘*newNode.pair’ is used uninitialized [-Werror=unini
 cc1: all warnings being treated as errors
 Compilation failed
 c73207b
+Mon 06 May 2024 06:43:26 PM UTC: 
+ treemap.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+test.c: In function ‘insertTreeMap’:
+treemap.c:51:12: error: ‘*newNode.pair’ is used uninitialized [-Werror=uninitialized]
+   51 |     newNode->pair->key = key;
+      |     ~~~~~~~^~~~~~
+treemap.c:52:12: error: ‘*newNode.pair’ is used uninitialized [-Werror=uninitialized]
+   52 |     newNode->pair->value = value;
+      |     ~~~~~~~^~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+4172213
