@@ -108,3 +108,36 @@ treemap.c:76:21: error: request for member ‘data’ in something not a structu
 cc1: all warnings being treated as errors
 Compilation failed
 fd894ea
+Mon 06 May 2024 06:25:05 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:51:12: error: ‘TreeNode’ has no member named ‘key’
+   51 |     newNode->key = key;
+      |            ^~
+treemap.c:52:12: error: ‘TreeNode’ has no member named ‘data’
+   52 |     newNode->data = data;
+      |            ^~
+treemap.c:52:21: error: ‘data’ undeclared (first use in this function)
+   52 |     newNode->data = data;
+      |                     ^~~~
+treemap.c:52:21: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:60:15: error: ‘true’ undeclared (first use in this function)
+   60 |         while(true) {
+      |               ^~~~
+treemap.c:5:1: note: ‘true’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+    4 | #include "treemap.h"
+  +++ |+#include <stdbool.h>
+    5 | 
+treemap.c:61:26: error: ‘TreeNode’ has no member named ‘key’
+   61 |             if(key < temp->key) {
+      |                          ^~
+treemap.c:68:33: error: ‘TreeNode’ has no member named ‘key’
+   68 |             } else if(key > temp->key) {
+      |                                 ^~
+treemap.c:76:21: error: ‘TreeNode’ has no member named ‘data’
+   76 |                 temp->data = data;
+      |                     ^~
+Compilation failed
+7902eee
