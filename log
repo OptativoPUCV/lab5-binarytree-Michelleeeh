@@ -49,3 +49,62 @@ treemap.c:5:1: note: ‘true’ is defined in header ‘<stdbool.h>’; did you 
 cc1: all warnings being treated as errors
 Compilation failed
 0567297
+Mon 06 May 2024 06:24:49 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:51:12: error: ‘TreeNode’ has no member named ‘key’
+   51 |     newNode->key = key;
+      |            ^~
+treemap.c:52:12: error: ‘TreeNode’ has no member named ‘data’
+   52 |     newNode->data = data;
+      |            ^~
+treemap.c:52:21: error: ‘data’ undeclared (first use in this function)
+   52 |     newNode->data = data;
+      |                     ^~~~
+treemap.c:52:21: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:59:9: error: unknown type name ‘Tree_Node’; did you mean ‘TreeNode’?
+   59 |         Tree_Node* temp = tree->root;
+      |         ^~~~~~~~~
+      |         TreeNode
+treemap.c:59:27: error: initialization of ‘int *’ from incompatible pointer type ‘TreeNode *’ [-Werror=incompatible-pointer-types]
+   59 |         Tree_Node* temp = tree->root;
+      |                           ^~~~
+treemap.c:60:15: error: ‘true’ undeclared (first use in this function)
+   60 |         while(true) {
+      |               ^~~~
+treemap.c:5:1: note: ‘true’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+    4 | #include "treemap.h"
+  +++ |+#include <stdbool.h>
+    5 | 
+treemap.c:61:26: error: request for member ‘key’ in something not a structure or union
+   61 |             if(key < temp->key) {
+      |                          ^~
+treemap.c:62:24: error: request for member ‘left’ in something not a structure or union
+   62 |                 if(temp->left == NULL) {
+      |                        ^~
+treemap.c:63:25: error: request for member ‘left’ in something not a structure or union
+   63 |                     temp->left = newNode;
+      |                         ^~
+treemap.c:66:32: error: request for member ‘left’ in something not a structure or union
+   66 |                     temp = temp->left;
+      |                                ^~
+treemap.c:68:33: error: request for member ‘key’ in something not a structure or union
+   68 |             } else if(key > temp->key) {
+      |                                 ^~
+treemap.c:69:24: error: request for member ‘right’ in something not a structure or union
+   69 |                 if(temp->right == NULL) {
+      |                        ^~
+treemap.c:70:25: error: request for member ‘right’ in something not a structure or union
+   70 |                     temp->right = newNode;
+      |                         ^~
+treemap.c:73:32: error: request for member ‘right’ in something not a structure or union
+   73 |                     temp = temp->right;
+      |                                ^~
+treemap.c:76:21: error: request for member ‘data’ in something not a structure or union
+   76 |                 temp->data = data;
+      |                     ^~
+cc1: all warnings being treated as errors
+Compilation failed
+fd894ea
