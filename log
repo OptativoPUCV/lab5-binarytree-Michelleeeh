@@ -141,3 +141,17 @@ treemap.c:76:21: error: ‘TreeNode’ has no member named ‘data’
       |                     ^~
 Compilation failed
 7902eee
+Mon 06 May 2024 06:30:52 PM UTC: 
+ treemap.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+In file included from test.c:4:
+test.c: In function ‘insertTreeMap’:
+treemap.c:51:12: error: ‘*newNode.pair’ is used uninitialized [-Werror=uninitialized]
+   51 |     newNode->pair->key = key;
+      |     ~~~~~~~^~~~~~
+treemap.c:52:12: error: ‘*newNode.pair’ is used uninitialized [-Werror=uninitialized]
+   52 |     newNode->pair->value = value;
+      |     ~~~~~~~^~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+c73207b
