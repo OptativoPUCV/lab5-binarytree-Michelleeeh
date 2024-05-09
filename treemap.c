@@ -180,15 +180,13 @@ Pair * upperBound(TreeMap * tree, void* key) {
             node = node->right;
             
         } else {
-            if (node->right != NULL) {
-                ub = node->right;
-                while (ub->left != NULL) {
-                    ub = ub->left;
-                }
-            }
-            break;
+                ub = node;
+                node = node->right;
+                
         }
+        break;
     }
+    
         
     if(ub != NULL) {
         tree->current = ub;
