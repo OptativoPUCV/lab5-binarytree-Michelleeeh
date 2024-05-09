@@ -126,12 +126,13 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             }
         } else {
             tree->root = child;
+            if(child != NULL) {
+                child->parent = parent;
+            }
         }
-        
-        if(child != NULL)
-            child->parent = parent;
         free(node);
     }
+    
 
     //Si el nodo tiene dos hijos
     else {
