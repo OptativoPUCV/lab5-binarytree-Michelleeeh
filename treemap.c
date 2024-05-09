@@ -95,7 +95,7 @@ TreeNode * minimum(TreeNode * x){
 void removeNode(TreeMap * tree, TreeNode* node) {
     TreeNode* parent = node->parent;
 
-    //Si el nodo es una hoja
+    // Si el nodo es una hoja
     if (node->left == NULL && node->right == NULL) {
         if (parent != NULL) {
             if (parent->left == node) {
@@ -104,6 +104,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 parent->right = NULL;
             }
         } else {
+            // Si el nodo es la raíz
             tree->root = NULL;
             tree->current = NULL;
         }
@@ -115,7 +116,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         }
     }
 
-    //Si el nodo tiene un solo hijo
+    // Si el nodo tiene un solo hijo
     else if (node->left == NULL || node->right == NULL) {
         TreeNode* child = (node->left != NULL) ? node->left : node->right;
         if (parent != NULL) {
@@ -125,22 +126,24 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 parent->right = child;
             }
         } else {
+            // Si el nodo es la raíz
             tree->root = child;
-            if(child != NULL) {
-                child->parent = parent;
+            if (child != NULL) {
+                child->parent = NULL;
             }
         }
         free(node);
     }
-    
 
-    //Si el nodo tiene dos hijos
+    // Si el nodo tiene dos hijos
     else {
         TreeNode* successor = minimum(node->right);
         node->pair->key = successor->pair->key;
         node->pair->value = successor->pair->value;
         removeNode(tree, successor);
     }
+
+    // Actualizar el puntero current después de eliminar el nodo
     tree->current = NULL;
 }
 
