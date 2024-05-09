@@ -25,7 +25,6 @@ int is_equal(TreeMap* tree, void* key1, void* key2){
     else return 0;
 }
 
-
 TreeNode * createTreeNode(void* key, void * value) {
     TreeNode * new = (TreeNode *)malloc(sizeof(TreeNode));
     if (new == NULL) return NULL;
@@ -94,7 +93,43 @@ TreeNode * minimum(TreeNode * x){
 
 
 void removeNode(TreeMap * tree, TreeNode* node) {
+    TreeNode* parent = node->parent;
 
+    //Si el nodo es una hoja
+    if (node->left == NULL && node->right == NULL) {
+        if (parent != NULL) {
+            if (parent->left == node) {
+                parent->left == NULL;
+            } else {
+                parent->right == NULL;
+            }
+        } else {
+            tree->root == NULL;
+        }
+        free(node);
+    }
+
+    //Si el nodo tiene un solo hijo
+    else if (node->left == NULL || node->right == NULL) {
+        TreeNode* child = (node->left != NULL) ? node->left : node->right;
+        if (parent != NULL) {
+            if (parent->left == node) {
+                parent->left = child;
+            } else {
+                parent->right = child;
+            }
+            child->parent = parent;
+            free(node);
+        }
+    }
+
+    //Si el nodo tiene dos hijos
+    else {
+        TreeNode* successor = minimum(node->right);
+        node->pair->key = successor->pair->key;
+        node->pair->value = successor->pair->value;
+        removeNode(tree, successor);
+    }
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
