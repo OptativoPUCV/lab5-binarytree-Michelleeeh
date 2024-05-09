@@ -47,25 +47,24 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
-    TreeNode* newNode = malloc(sizeof(TreeNode));
-    newNode->pair->key = key;
-    newNode->pair->value = value;
-    newNode->left = NULL;
-    newNode->right = NULL;
+    TreeNode* newNode = createTreeNode(key, value);
+    if (newNode == NULL) {
+    // Error de asignación de memoria
+    return;
 
     if(tree->root == NULL) {
         tree->root = newNode;
     } else {
         TreeNode* temp = tree->root;
         while(1) {
-            if(key < temp->pair->key) {
+            if(tree->lower_than(key, temp->pair->key)) {
                 if(temp->left == NULL) {
                     temp->left = newNode;
                     break;
                 } else {
                     temp = temp->left;
                 }
-            } else if(key > temp->pair->key) {
+            } else if(tree->lower_than(temp->pair->key, key)) {
                 if(temp->right == NULL) {
                     temp->right = newNode;
                     break;
@@ -79,14 +78,12 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
             }
         }
     }
-
 }
 
 TreeNode * minimum(TreeNode * x){
     while(x->left != NULL) {
         x = x->left;
     }
-
     return x;
 }
 
