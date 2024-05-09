@@ -77,10 +77,12 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
             } else {  // Si la clave ya existe, actualizamos el dato
                 temp->pair->value = value;
                 free(newNode);  // Liberamos el nodo que ya no vamos a utilizar
+                tree->current = temp;
                 break;
             }
         }
     }
+    tree->current = newNode;
 }
 
 TreeNode * minimum(TreeNode * x){
