@@ -51,6 +51,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     if (newNode == NULL) {
     // Error de asignación de memoria
     return;
+    }
 
     if(tree->root == NULL) {
         tree->root = newNode;
