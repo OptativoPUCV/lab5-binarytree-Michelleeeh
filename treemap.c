@@ -181,7 +181,7 @@ Pair * upperBound(TreeMap * tree, void* key) {
             
         } else {
             if (node->right != NULL) {
-                node = node->right;
+                ub = node->right;
                 while (ub->left != NULL) {
                     ub = ub->left;
                 }
