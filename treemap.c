@@ -93,7 +93,7 @@ TreeNode * minimum(TreeNode * x){
 
 
 void removeNode(TreeMap * tree, TreeNode* node) {
-    TreeNode* parent = node->parent;
+    
 
     //Si el nodo es una hoja
     if (node->left == NULL && node->right == NULL) {
